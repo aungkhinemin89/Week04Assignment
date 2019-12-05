@@ -54,3 +54,13 @@ class Stock:
             stock = Stock(stockTuple)
             stock_list.append(stock)
         return stock_list
+
+    def stockInEntryAdd(self):
+        Database._cursor.execute(
+            "update stocks set stock_in_qty = %s where id=%s", [self.stock_in_qty, self.id])
+        Database._db.commit()
+
+    def stockOutQtyAdd(self):
+        Database._cursor.execute(
+            "update stocks set stock_out_qty = %s where id=%s", [self.stock_out_qty, self.id])
+        Database._db.commit()
